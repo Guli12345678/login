@@ -35,7 +35,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <div>
+      <div className="wrapper">
         <form onSubmit={handleSubmit} className="form" action="">
           <div className="inputs">
             <input
@@ -69,29 +69,24 @@ const Sidebar = () => {
           </div>
           <button>Login</button>
         </form>
-        <div className="info">
-          <div className="sth"></div>
-          <div className="infos">
-            <div className="card">
-              <div className="img">{fname[0]}</div>
-              {data.length ? (
-                data?.map((item) => (
-                  <div key={item.id}>
-                    <h3>First Name: {item.fname}</h3>
-                    <h3>Last Name: {item.lname}</h3>
-                    <h3> Age: {item.age}</h3>
-                    <h3> Job: {item.job}</h3>
-                    <button onClick={() => handleDelete(item.id)}>
-                      Delete
-                    </button>
-                    <button>Update</button>
-                    <hr />
-                  </div>
-                ))
-              ) : (
-                <div>Empty</div>
-              )}
-            </div>
+        <div className="card__wrapper">
+          <div className="card">
+            {data.length ? (
+              data?.map((item) => (
+                <div key={item.id}>
+                  <div className="img">{item.fname[0]}</div>
+                  <h3 className="fname"> {item.fname}</h3>
+                  <h3>{item.lname}</h3>
+                  <h3> {item.age}</h3>
+                  <h3> {item.job}</h3>
+                  <button onClick={() => handleDelete(item.id)}>Delete</button>
+                  <button>Update</button>
+                  <hr />
+                </div>
+              ))
+            ) : (
+              <div>Empty</div>
+            )}
           </div>
         </div>
       </div>
